@@ -1,0 +1,50 @@
+<%- include("templates/headerTemplate") %>
+<link rel="stylesheet" href="/CSS/aboutStyles.css">
+<body>
+    <div class="Container">
+        <%- include("templates/navTemplate") %> 
+        <main>
+            <div class="maindiv">
+                <div class="title">
+                    <p> CHECK HISTORICAL RATES</p>
+                </div> 
+                <div class="formAndDocu">
+                    <form class="historicalRatesForm" id="historicalRatesForm" action ="/API" method="post">
+                        <label for="selectCurrency">Select a Currency:</label>
+                        <select id="selectACurrency" name="selectCurrency" required>
+                          <!-- to be generated in js -->
+                        </select>
+                        <label  for="dateInput">Enter Date you want to Check:</label>
+                        <input class="date" type="input" id="dateInput" name="dateInput" required />
+                        <br>
+                        <button class="getHistory" id="getHistory" type="submit">GET HISTORY</button>
+                    </form>  
+                    <div class="documentation"> 
+                        <p>To request historical rates for a specific day</p>
+                        <p>URL: <span class="spanStyle1">'http://localhost:3002/API/'</span> </p> 
+                        <p>ENDPOINT: <span class="spanStyle1">'currency=symbol&YYYY-MM-DD'</span></p>
+                        <p>REQUEST EXAMPLE: <span class="spanStyle1">'http://localhost:3002/API/currency=PHP&2022-11-05'</span></p>
+                        <p>RESPONSE EXAMPLE:</p>
+                        <div>
+                            <p>
+                               <span class="spanStyle2"> {<br>
+                                &emsp;"success": true,<br>
+                                &emsp;"timestamp": 1519296206,<br>
+                                &emsp;"base": "USD",<br>
+                                &emsp;"date": "2021-03-17",<br>
+                                &emsp;&emsp;"rates": {<br>
+                                    &emsp;&emsp;&emsp;"GBP": 0.72007,<br>
+                                    &emsp;&emsp;} <br>
+                                }</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>          
+                
+            </div>            
+        </main>       
+        <%- include("templates/footerTemplate") %>  
+    </div>
+    <script src="/JS/currencySymbols.js" ></script>
+</body>
+</html>
